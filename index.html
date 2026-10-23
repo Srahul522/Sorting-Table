@@ -1,164 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alphabetical Sorter</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #f4f6f8;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .controls {
-      display: flex;
-      gap: 10px;
-    }
-
-    input {
-      flex: 1;
-      min-width: 0;
-      padding: 12px;
-      font-size: 16px;
-    }
-
-    button {
-      padding: 12px 18px;
-      cursor: pointer;
-      background: #2563eb;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-
-    table {
-      width: 100%;
-      margin-top: 20px;
-      border-collapse: collapse;
-      background: white;
-    }
-
-    th,
-    td {
-      border: 1px solid #ddd;
-      padding: 12px;
-      text-align: left;
-    }
-
-    th {
-      background: #2563eb;
-      color: white;
-    }
-  </style>
+  <title>Sortly — Alphabetical Sorter</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
+  <main class="app">
+    <header class="header">
+      <h1>U.S Saini Medical Store<span class="accent">.</span></h1>
+      <p>Your list, organized automatically.</p>
+    </header>
 
-  <h1>U.S Saini Medical Store </h1>
+    <section class="card">
+      <form class="controls" id="addForm">
+        <input id="wordInput" type="text"
+          placeholder="Enter a name or word..." autocomplete="off">
+        <button class="add-btn" type="submit">+ Add Item</button>
+      </form>
 
-  <div class="controls">
-    <input id="wordInput" type="text" placeholder="Enter a word...">
+      <div class="table-heading">
+        <h2>Your Items</h2>
+        <span class="count" id="count">0 items</span>
+      </div>
 
-    <button id="addBtn">Add</button>
-    <button id="clearBtn">Clear All</button>
-  </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="number">#</th>
+              <th>Name (A–Z)</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name (A–Z)</th>
-      </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-  </table>
-
-  <script>
-    const input = document.getElementById("wordInput");
-    const addBtn = document.getElementById("addBtn");
-    const tableBody = document.getElementById("tableBody");
-const clearBtn = document.getElementById("clearBtn");
-
-clearBtn.addEventListener("click", () => {
-  words = [];
-  renderTable();
-});
-    let words = JSON.parse(
-      localStorage.getItem("sortedWords") || "[]"
-    );
-
-    function renderTable() {
-  tableBody.innerHTML = "";
-
-  words.forEach((word, index) => {
-    const row = document.createElement("tr");
-
-    const numberCell = document.createElement("td");
-    numberCell.textContent = index + 1;
-
-    const wordCell = document.createElement("td");
-    wordCell.textContent = word;
-
-    const actionCell = document.createElement("td");
-    const deleteBtn = document.createElement("button");
-
-    deleteBtn.textContent = "Delete";
-    deleteBtn.style.background = "crimson";
-
-    deleteBtn.addEventListener("click", () => {
-      words.splice(index, 1);
-      renderTable();
-    });
-
-    actionCell.appendChild(deleteBtn);
-    row.append(numberCell, wordCell, actionCell);
-    tableBody.appendChild(row);
-  });
-
-  // Save updated table
-  localStorage.setItem(
-    "sortedWords",
-    JSON.stringify(words)
-  );
-}
-
-    function addWord() {
-      const word = input.value.trim();
-
-      if (word === "") return;
-
-      words.push(word);
-
-      words.sort((a, b) =>
-        a.localeCompare(b, undefined, {
-          sensitivity: "base"
-        })
-      );
-
-      renderTable();
-      input.value = "";
-      input.focus();
-    }
-
-    addBtn.addEventListener("click", addWord);
-
-    input.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        addWord();
-      }
-    });
-    renderTable();
-  </script>
-
+      <div class="footer">
+        <span id="saveStatus">Auto-save enabled</span>
+        <button class="clear-btn" id="clearBtn" type="button">Clear All</button>
+      </div>
+    </section>
+  </main>
 </body>
-
 </html>
