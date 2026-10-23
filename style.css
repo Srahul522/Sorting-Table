@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -6,8 +7,8 @@ body {
   margin: 0;
   padding: 40px 16px;
   font-family: Arial, sans-serif;
-  background: #f5f7fb;
-  color: #182230;
+  background: #0b1120;
+  color: #e5e7eb;
 }
 
 .app {
@@ -23,24 +24,25 @@ body {
   font-size: 30px;
   margin: 0 0 8px;
   letter-spacing: -1px;
+  color: #f8fafc;
 }
 
 .accent {
-  color: #2563eb;
+  color: #60a5fa;
 }
 
 .header p {
   margin: 0;
-  color: #718096;
+  color: #94a3b8;
   font-size: 14px;
 }
 
 .card {
-  background: white;
+  background: #111827;
   padding: 24px;
-  border: 1px solid #e7ebf2;
+  border: 1px solid #263247;
   border-radius: 16px;
-  box-shadow: 0 8px 30px #17255408;
+  box-shadow: 0 12px 35px #00000030;
 }
 
 .controls {
@@ -54,16 +56,22 @@ input {
   width: 0;
   min-width: 0;
   padding: 13px 14px;
-  border: 1px solid #dce2eb;
+  background: #0b1220;
+  color: #f1f5f9;
+  border: 1px solid #334155;
   border-radius: 9px;
   outline: none;
   font-size: 15px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+  color: #64748b;
 }
 
 input:focus {
-  border-color: #3978f6;
-  box-shadow: 0 0 0 3px #3978f618;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px #3b82f625;
 }
 
 button {
@@ -73,12 +81,16 @@ button {
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
-  transition: 0.2s;
+  transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+  transform: translateY(-1px);
 }
 
 .add-btn {
   background: #2563eb;
-  color: white;
+  color: #ffffff;
 }
 
 .add-btn:hover {
@@ -87,13 +99,13 @@ button {
 
 .clear-btn,
 .delete-btn {
-  background: #fff1f2;
-  color: #e11d48;
+  background: #3a1823;
+  color: #fda4af;
 }
 
 .clear-btn:hover,
 .delete-btn:hover {
-  background: #ffe4e6;
+  background: #57202e;
 }
 
 .table-heading {
@@ -107,12 +119,13 @@ button {
 .table-heading h2 {
   font-size: 17px;
   margin: 0;
+  color: #e2e8f0;
 }
 
 .count {
   font-size: 12px;
-  color: #2563eb;
-  background: #eff6ff;
+  color: #93c5fd;
+  background: #172b4d;
   padding: 6px 10px;
   border-radius: 20px;
   white-space: nowrap;
@@ -120,31 +133,35 @@ button {
 
 .table-wrap {
   overflow-x: auto;
-  border: 1px solid #e8edf4;
+  border: 1px solid #293548;
   border-radius: 10px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: #111827;
 }
 
 th,
 td {
   text-align: left;
   padding: 14px 12px;
-  border-bottom: 1px solid #edf0f5;
+  border-bottom: 1px solid #263247;
   font-size: 14px;
 }
 
 th {
-  color: #718096;
-  background: #f8fafc;
+  color: #94a3b8;
+  background: #182235;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.4px;
+}
+
+td {
+  color: #e2e8f0;
 }
 
 tbody tr:last-child td {
@@ -152,7 +169,7 @@ tbody tr:last-child td {
 }
 
 tbody tr:hover {
-  background: #fafcff;
+  background: #1a2639;
 }
 
 .number {
@@ -180,6 +197,21 @@ tbody tr:hover {
   gap: 10px;
   color: #94a3b8;
   font-size: 12px;
+}
+
+.signature {
+  position: fixed;
+  right: 18px;
+  bottom: 14px;
+  color: #cbd5e1;
+  background: #111827;
+  padding: 8px 12px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px #00000040;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  user-select: none;
 }
 
 @media (max-width: 480px) {
@@ -210,5 +242,11 @@ tbody tr:hover {
   th,
   td {
     padding: 12px 9px;
+  }
+
+  .signature {
+    right: 12px;
+    bottom: 8px;
+    font-size: 11px;
   }
 }
