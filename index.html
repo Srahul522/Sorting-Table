@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <main class="app">
     <header class="header">
@@ -16,8 +18,8 @@
 
     <section class="card">
       <form class="controls" id="addForm">
-        <input id="wordInput" type="text"
-          placeholder="Enter a name or word..." autocomplete="off">
+        <input id="wordInput" type="text" placeholder="Enter a name or word..." autocomplete="off">
+        <input type="text" id="descriptionInput" placeholder="Enter description" />
         <button class="add-btn" type="submit">+ Add Item</button>
       </form>
 
@@ -26,19 +28,20 @@
         <span class="count" id="count">0 items</span>
       </div>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th class="number">#</th>
-              <th>Name (A–Z)</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
 
+    <tbody id="tableBody"></tbody>
+  </table>
+</div>
       <div class="footer">
         <span id="saveStatus">Auto-save enabled</span>
         <button class="clear-btn" id="clearBtn" type="button">Clear All</button>
@@ -48,4 +51,5 @@
     <!-- <footer class="signature">Community Srahul522.</footer> -->
   </main>
 </body>
+
 </html>
